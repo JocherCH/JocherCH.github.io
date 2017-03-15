@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android, Java" />
+  <meta name="keywords" content="pattern," />
 
 
 
@@ -105,36 +105,56 @@
 
 
 
-<meta name="description" content="blah blah blah
+<meta name="description" content="阅读本文大概需要10分钟
 
 
-blah blah blah 
 
-本文阅读时间袋盖tip：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧1. 单一职责2. 开闭原则3. 里氏替换原则4. 依赖倒置原则5. 接口隔离原则6. 迪米特原则
-23种设计模式可以分类成行为型、创建型以及结构性，下面我们对创建型的几种设计模式来进行简单的分析讲解，同时加深我们对设计模式的理解">
+tips：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧
+
+单一职责
+开闭原则
+里氏替换原则
+依赖倒置原则
+接口隔离原则
+迪米特原则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="new article">
-<meta property="og:url" content="http://yoursite.com/2017/03/14/new-article/index.html">
+<meta property="og:title" content="创建型设计模式简介">
+<meta property="og:url" content="http://yoursite.com/2017/03/14/创建型设计模式简介/index.html">
 <meta property="og:site_name" content="RiderWu">
-<meta property="og:description" content="blah blah blah
+<meta property="og:description" content="阅读本文大概需要10分钟
 
 
-blah blah blah 
 
-本文阅读时间袋盖tip：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧1. 单一职责2. 开闭原则3. 里氏替换原则4. 依赖倒置原则5. 接口隔离原则6. 迪米特原则
-23种设计模式可以分类成行为型、创建型以及结构性，下面我们对创建型的几种设计模式来进行简单的分析讲解，同时加深我们对设计模式的理解">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3103040-fbd9b55ce515ffc0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-03-14T02:31:41.263Z">
+tips：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧
+
+单一职责
+开闭原则
+里氏替换原则
+依赖倒置原则
+接口隔离原则
+迪米特原则">
+<meta property="og:image" content="http://yoursite.com/images/craete_pattern.webp">
+<meta property="og:image" content="http://yoursite.com/images/singleton.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3103040-f747a066aa518828.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3103040-eebba065c500d676.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3103040-fae708f357155ae2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3103040-aa2458cd001121c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-15T08:55:49.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="new article">
-<meta name="twitter:description" content="blah blah blah
+<meta name="twitter:title" content="创建型设计模式简介">
+<meta name="twitter:description" content="阅读本文大概需要10分钟
 
 
-blah blah blah 
 
-本文阅读时间袋盖tip：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧1. 单一职责2. 开闭原则3. 里氏替换原则4. 依赖倒置原则5. 接口隔离原则6. 迪米特原则
-23种设计模式可以分类成行为型、创建型以及结构性，下面我们对创建型的几种设计模式来进行简单的分析讲解，同时加深我们对设计模式的理解">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3103040-fbd9b55ce515ffc0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+tips：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧
+
+单一职责
+开闭原则
+里氏替换原则
+依赖倒置原则
+接口隔离原则
+迪米特原则">
+<meta name="twitter:image" content="http://yoursite.com/images/craete_pattern.webp">
 
 
 
@@ -162,13 +182,13 @@ blah blah blah
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/14/new-article/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/14/创建型设计模式简介/"/>
 
 
 
 
 
-  <title> new article | RiderWu </title>
+  <title> 创建型设计模式简介 | RiderWu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -297,7 +317,7 @@ blah blah blah
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/new-article/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/创建型设计模式简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RiderWu">
@@ -318,7 +338,7 @@ blah blah blah
             
             
               
-                new article
+                创建型设计模式简介
               
             
           </h1>
@@ -351,7 +371,7 @@ blah blah blah
 
           
           
-             <span id="/2017/03/14/new-article/" class="leancloud_visitors" data-flag-title="new article">
+             <span id="/2017/03/14/创建型设计模式简介/" class="leancloud_visitors" data-flag-title="创建型设计模式简介">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -380,13 +400,21 @@ blah blah blah
       
 
       
-        <blockquote class="blockquote-center"><p>blah blah blah</p>
+        <blockquote class="blockquote-center"><p>阅读本文大概需要10分钟</p>
 </blockquote>
-<!-- 标签别名 -->
-<blockquote class="blockquote-center"><p>blah blah blah </p>
+<p><img src="/images/craete_pattern.webp" alt="image"></p>
+<blockquote>
+<p>tips：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧</p>
+<ol>
+<li>单一职责</li>
+<li>开闭原则</li>
+<li>里氏替换原则</li>
+<li>依赖倒置原则</li>
+<li>接口隔离原则</li>
+<li>迪米特原则<a id="more"></a>
+23种设计模式可以分类成行为型、创建型以及结构性，下面我们对创建型的几种设计模式来进行简单的分析讲解，同时加深我们对设计模式的理解</li>
+</ol>
 </blockquote>
-<p><em>本文阅读时间袋盖</em><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">tip：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧</div><div class="line">1. 单一职责</div><div class="line">2. 开闭原则</div><div class="line">3. 里氏替换原则</div><div class="line">4. 依赖倒置原则</div><div class="line">5. 接口隔离原则</div><div class="line">6. 迪米特原则</div></pre></td></tr></table></figure></p>
-<p>23种设计模式可以分类成行为型、创建型以及结构性，下面我们对创建型的几种设计模式来进行简单的分析讲解，同时加深我们对设计模式的理解<a id="more"></a></p>
 <h3 id="单例模式-Singleton-Pattern"><a href="#单例模式-Singleton-Pattern" class="headerlink" title="单例模式(Singleton Pattern)"></a>单例模式(Singleton Pattern)</h3><ul>
 <li><p>定义</p>
 <p>  确保一个类只有一个实例，并提供全局访问点</p>
@@ -401,18 +429,68 @@ blah blah blah
 <li><p>UML类图</p>
 </li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/3103040-fbd9b55ce515ffc0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<ul>
-<li>代码示例</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 1-饿汉 </span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">new</span> Singleton();</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 2-懒汉</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(singleton == <span class="keyword">null</span>)&#123;</div><div class="line">            singleton = <span class="keyword">new</span> Singleton();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 3-双重锁校验 懒汉</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(singleton == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">synchronized</span>(singleton)&#123;</div><div class="line">                <span class="keyword">if</span>(singleton == <span class="keyword">null</span>)&#123;</div><div class="line">                    singleton = <span class="keyword">new</span> Singleton();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> singleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 4-静态内部类 </span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Sginleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> SingletonHolder.singleton;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> class <span class="title">SingletonHolder</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">new</span> Singleton();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//5-枚举</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton&#123;</div><div class="line">    INSTANCE;</div><div class="line">    <span class="comment">//do other thing</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="/images/singleton.png" alt="image"></p>
 <p>关于工具类和单例的区别</p>
 <ul>
 <li>工具类不保存状态，只提供一些静态方法或静态属性对外使用；单例类则可以保存状态</li>
 <li>工具类是一些方法的属性集合；单例类则是有着唯一的对象示例</li>
 <li>工具类不能继承多态；单例类则可以有子类来继承</li>
 </ul>
-<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><h3 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h3><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3>
+<h3 id="原型模式-Prototype-Pattern"><a href="#原型模式-Prototype-Pattern" class="headerlink" title="原型模式(Prototype Pattern)"></a>原型模式(Prototype Pattern)</h3><ul>
+<li><p>定义</p>
+<p>  用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象</p>
+</li>
+<li><p>要点</p>
+<ul>
+<li>向客户隐藏了制造新实例的复杂性</li>
+<li>提供让客户能够产生未知类对象的选项</li>
+<li>在某些环境下，复制对象比创建对象更有效</li>
+</ul>
+</li>
+<li><p>UML类图</p>
+<p>  <img src="http://upload-images.jianshu.io/upload_images/3103040-f747a066aa518828.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+</li>
+</ul>
+<p>需要关注的地方在于浅拷贝和深拷贝的区别<br>如果字段是指类型，则对该字段执行逐位复制；如果字段是引用类型，则复制引用但不复制引用的对象;因此，原始对象及其复制对象引用同一对象。</p>
+<h3 id="Builder模式-Builder-Pattern"><a href="#Builder模式-Builder-Pattern" class="headerlink" title="Builder模式(Builder Pattern)"></a>Builder模式(Builder Pattern)</h3><ul>
+<li><p>定义</p>
+<p>  封装一个产品的构造过程，并允许按步骤构造</p>
+</li>
+<li><p>要点</p>
+<ul>
+<li>将一个复杂对象的创建过程封装起来</li>
+<li>允许对象通过多个步骤来创建，并且可以改变过程</li>
+<li>产品的实现可以被替换，对外只有一个接口</li>
+</ul>
+</li>
+<li><p>UML类图</p>
+<p>  <img src="http://upload-images.jianshu.io/upload_images/3103040-eebba065c500d676.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+</li>
+</ul>
+<h3 id="工厂模式-Factory-Method-Pattern"><a href="#工厂模式-Factory-Method-Pattern" class="headerlink" title="工厂模式(Factory Method Pattern)"></a>工厂模式(Factory Method Pattern)</h3><ul>
+<li><p>定义</p>
+<p>  定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个。工厂方法让类的实例化延迟到子类。</p>
+</li>
+<li>要点</li>
+<li>UML类图</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/3103040-fae708f357155ae2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="抽象工厂模式-Abstract-Factory-Pattern"><a href="#抽象工厂模式-Abstract-Factory-Pattern" class="headerlink" title="抽象工厂模式(Abstract Factory Pattern)"></a>抽象工厂模式(Abstract Factory Pattern)</h3><ul>
+<li><p>定义</p>
+<p>  创建的类属于一个系类，即对外可以有相同的接口的话，可以用工厂模式</p>
+</li>
+<li>要点</li>
+<li>UML类图</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/3103040-aa2458cd001121c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>那么工厂模式和抽象工厂模式的区别是什么</p>
+<ul>
+<li>工厂模式：一个产品抽象类，可以派生多个子类；抽象工厂模式：可以派生出多个具体工厂类。</li>
+</ul>
+<blockquote>
+<p>上述设计模式相关代码已经上传到github仓库中<a href="https://github.com/JocherCH/java-pattern" target="_blank" rel="external">https://github.com/JocherCH/java-pattern</a>; 本文首发<a href="https://jocherch.github.io；依次会上传到csdn，知乎，微信公众号上。欢迎大家来给建议~~" target="_blank" rel="external">https://jocherch.github.io；依次会上传到csdn，知乎，微信公众号上。欢迎大家来给建议~~</a></p>
+</blockquote>
+
       
     </div>
 
@@ -443,6 +521,12 @@ blah blah blah
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pattern/" rel="tag"># pattern</a>
+          
+        </div>
       
 
       
@@ -542,6 +626,15 @@ blah blah blah
           
 
           
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
 
         </nav>
 
@@ -572,7 +665,7 @@ blah blah blah
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式-Singleton-Pattern"><span class="nav-number">1.</span> <span class="nav-text">单例模式(Singleton Pattern)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式"><span class="nav-number">2.</span> <span class="nav-text">原型模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Builder模式"><span class="nav-number">3.</span> <span class="nav-text">Builder模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂模式"><span class="nav-number">4.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象工厂模式"><span class="nav-number">5.</span> <span class="nav-text">抽象工厂模式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式-Singleton-Pattern"><span class="nav-number">1.</span> <span class="nav-text">单例模式(Singleton Pattern)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式-Prototype-Pattern"><span class="nav-number">2.</span> <span class="nav-text">原型模式(Prototype Pattern)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Builder模式-Builder-Pattern"><span class="nav-number">3.</span> <span class="nav-text">Builder模式(Builder Pattern)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂模式-Factory-Method-Pattern"><span class="nav-number">4.</span> <span class="nav-text">工厂模式(Factory Method Pattern)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象工厂模式-Abstract-Factory-Pattern"><span class="nav-number">5.</span> <span class="nav-text">抽象工厂模式(Abstract Factory Pattern)</span></a></li></ol></div>
             
 
           </div>
