@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="pattern," />
+  <meta name="keywords" content="Android, Java" />
 
 
 
@@ -107,58 +107,20 @@
 
 <meta name="description" content="阅读本文大概需要5分钟
 
-
-如果忘了创建型设计模式相关内容的话请点击该链接。本文简单介绍结构型设计模式，相关代码以上转至github
-开篇不忘tips：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧
-
-
-单一职责
-开闭原则
-里氏替换原则
-依赖倒置原则
-接口隔离原则
-迪米特原则">
+由于Presenter经常性地需要执行一些耗时的操作，例如，我们经常使用的网络请求数据。当 Presenter 持有了 Activity 的强引用，如果在请求结束之前，Activity 被销毁了，那么由于网络请求还没有返回，导致 Presenter 一直持有 Activity 对象的引用，使得该对象无法被系统回收，此时就发生了内存泄露。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="结构型设计模式">
-<meta property="og:url" content="http://yoursite.com/pattern/structure-pattern/index.html">
+<meta property="og:title" content="mvp 内存泄露处理方案">
+<meta property="og:url" content="http://yoursite.com/mvp/mvp-memory-leak/index.html">
 <meta property="og:site_name" content="RiderWu">
 <meta property="og:description" content="阅读本文大概需要5分钟
 
-
-如果忘了创建型设计模式相关内容的话请点击该链接。本文简单介绍结构型设计模式，相关代码以上转至github
-开篇不忘tips：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧
-
-
-单一职责
-开闭原则
-里氏替换原则
-依赖倒置原则
-接口隔离原则
-迪米特原则">
-<meta property="og:image" content="http://img.blog.csdn.net/20170320152152861?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170320152229703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170320152244109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170320152304219?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170320152320016?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170320152332362?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170320152343329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-03-22T06:23:56.102Z">
+由于Presenter经常性地需要执行一些耗时的操作，例如，我们经常使用的网络请求数据。当 Presenter 持有了 Activity 的强引用，如果在请求结束之前，Activity 被销毁了，那么由于网络请求还没有返回，导致 Presenter 一直持有 Activity 对象的引用，使得该对象无法被系统回收，此时就发生了内存泄露。">
+<meta property="og:updated_time" content="2017-03-28T01:40:33.673Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="结构型设计模式">
+<meta name="twitter:title" content="mvp 内存泄露处理方案">
 <meta name="twitter:description" content="阅读本文大概需要5分钟
 
-
-如果忘了创建型设计模式相关内容的话请点击该链接。本文简单介绍结构型设计模式，相关代码以上转至github
-开篇不忘tips：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧
-
-
-单一职责
-开闭原则
-里氏替换原则
-依赖倒置原则
-接口隔离原则
-迪米特原则">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170320152152861?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+由于Presenter经常性地需要执行一些耗时的操作，例如，我们经常使用的网络请求数据。当 Presenter 持有了 Activity 的强引用，如果在请求结束之前，Activity 被销毁了，那么由于网络请求还没有返回，导致 Presenter 一直持有 Activity 对象的引用，使得该对象无法被系统回收，此时就发生了内存泄露。">
 
 
 
@@ -186,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/pattern/structure-pattern/"/>
+  <link rel="canonical" href="http://yoursite.com/mvp/mvp-memory-leak/"/>
 
 
 
 
 
-  <title> 结构型设计模式 | RiderWu </title>
+  <title> mvp 内存泄露处理方案 | RiderWu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +283,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/pattern/structure-pattern/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/mvp/mvp-memory-leak/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RiderWu">
@@ -342,7 +304,7 @@
             
             
               
-                结构型设计模式
+                mvp 内存泄露处理方案
               
             
           </h1>
@@ -357,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T15:27:55+08:00">
-                2017-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-28T09:34:19+08:00">
+                2017-03-28
               </time>
             
 
@@ -380,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pattern/" itemprop="url" rel="index">
-                    <span itemprop="name">pattern</span>
+                  <a href="/categories/mvp/" itemprop="url" rel="index">
+                    <span itemprop="name">mvp</span>
                   </a>
                 </span>
 
@@ -398,8 +360,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/pattern/structure-pattern/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="pattern/structure-pattern/" itemprop="commentCount"></span>
+                <a href="/mvp/mvp-memory-leak/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="mvp/mvp-memory-leak/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,7 +369,7 @@
 
           
           
-             <span id="/pattern/structure-pattern/" class="leancloud_visitors" data-flag-title="结构型设计模式">
+             <span id="/mvp/mvp-memory-leak/" class="leancloud_visitors" data-flag-title="mvp 内存泄露处理方案">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -438,106 +400,17 @@
       
         <blockquote class="blockquote-center"><p>阅读本文大概需要5分钟</p>
 </blockquote>
-<blockquote>
-<p>如果忘了<a href="https://jocherch.github.io/riderwu/created-pattern/" target="_blank" rel="external">创建型设计模式</a>相关内容的话请点击该链接。本文简单介绍结构型设计模式，相关代码以上转至<a href="https://github.com/JocherCH/java-pattern" target="_blank" rel="external">github</a></p>
-<p>开篇不忘tips：每次都回忆一下面向对象六大原则,心里默默回想一下是如何描述的吧</p>
-</blockquote>
-<ol>
-<li>单一职责</li>
-<li>开闭原则</li>
-<li>里氏替换原则</li>
-<li>依赖倒置原则</li>
-<li>接口隔离原则</li>
-<li>迪米特原则</li>
-</ol>
+<p>由于Presenter经常性地需要执行一些耗时的操作，例如，我们经常使用的网络请求数据。当 Presenter 持有了 Activity 的强引用，如果在请求结束之前，Activity 被销毁了，那么由于网络请求还没有返回，导致 Presenter 一直持有 Activity 对象的引用，使得该对象无法被系统回收，此时就发生了内存泄露。</p>
 <a id="more"></a>
-<h2 id="桥接模式-Bridge-Pattern"><a href="#桥接模式-Bridge-Pattern" class="headerlink" title="桥接模式(Bridge Pattern)"></a>桥接模式(Bridge Pattern)</h2><ul>
-<li><p>定义</p>
-<p>  将抽象部分与实现部分分离，使各自可以独立变化</p>
-</li>
-<li><p>场景</p>
-<ul>
-<li>多维度变化类或多个树状类之间的耦合都可以用桥接模式解耦</li>
-<li>一个类存在两个独立变化的维度，且这两个维度都需要进行扩展</li>
-</ul>
-</li>
-<li><p>UML类图</p>
-</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20170320152152861?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<h2 id="外观模式-Facade-Pattern"><a href="#外观模式-Facade-Pattern" class="headerlink" title="外观模式(Facade Pattern)"></a>外观模式(Facade Pattern)</h2><ul>
-<li><p>定义<br>  为子系统中的一组接口提供一个一致的界面，此模式定义了一个高层接口，这个接口使得一系列子接口更加容易使用</p>
-</li>
-<li><p>场景</p>
-<ul>
-<li>常见的封装第三方SDK，对外提供统一接口</li>
-<li>当需要构建一个有层次的子系统时，使用Facade模式来定义系统中每层的入口点</li>
-</ul>
-</li>
-<li><p>UML类图</p>
-</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20170320152229703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<h2 id="组合模式-Composite-Pattern"><a href="#组合模式-Composite-Pattern" class="headerlink" title="组合模式(Composite Pattern)"></a>组合模式(Composite Pattern)</h2><ul>
-<li><p>定义<br>  将对象组合成树形结构以表示 “部分 - 整体” 的层次结构。组合模式使得用户对单个对象和组合对象的使用时一致性的</p>
-</li>
-<li><p>场景</p>
-<ul>
-<li>需求中需要体现部分与整体层次的结构时，可以考虑组合模式</li>
-<li>希望用户可以忽略组合对象与单个对象的不同，统一使用组合结构中的所有对象时，可以考虑组合模式</li>
-</ul>
-</li>
-</ul>
-<p>-UML类图</p>
-<p><img src="http://img.blog.csdn.net/20170320152244109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<h2 id="装饰模式-Decorator-Pattern"><a href="#装饰模式-Decorator-Pattern" class="headerlink" title="装饰模式(Decorator Pattern)"></a>装饰模式(Decorator Pattern)</h2><ul>
-<li><p>定义<br>  动态的给一个对象增加一些额外的职责，就增加功能来说，装饰模式比生成子类更为灵活</p>
-</li>
-<li><p>场景<br>  需要透明且动态的扩展类的功能时，可以使用装饰模式</p>
-</li>
-<li><p>UML类图</p>
-</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20170320152304219?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<h2 id="适配器模式-Adapter-Pattern"><a href="#适配器模式-Adapter-Pattern" class="headerlink" title="适配器模式(Adapter Pattern)"></a>适配器模式(Adapter Pattern)</h2><ul>
-<li><p>定义<br>  讲一个类的接口转化成客户希望的另一个接口。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</p>
-</li>
-<li><p>场景</p>
-<ul>
-<li>系统需要使用现有的类，而此类的接口不符合系统的需求，即接口不兼容</li>
-<li>想要建立一个可以重复使用的类，用于与一些彼此之间没有太大关联的一些类，包括一些可能在将来引进的一些类一起工作</li>
-<li>需要一个统一的输出接口，而输入端的类型不可预知</li>
-</ul>
-</li>
-<li><p>UML类图</p>
-</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20170320152320016?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<h2 id="代理模式-Proxy-Pattern"><a href="#代理模式-Proxy-Pattern" class="headerlink" title="代理模式(Proxy Pattern)"></a>代理模式(Proxy Pattern)</h2><ul>
-<li><p>定义<br>  为其他对象提供一种代理以控制对这个对象的访问</p>
-</li>
-<li><p>场景<br>  当无法或不想直接访问某个对象或访问某个对象存在困难时可以使用代理模式</p>
-</li>
-<li><p>UML类图</p>
-</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20170320152332362?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<h2 id="享元模式-FlyWeight-Pattern"><a href="#享元模式-FlyWeight-Pattern" class="headerlink" title="享元模式(FlyWeight Pattern)"></a>享元模式(FlyWeight Pattern)</h2><ul>
-<li><p>定义<br>  使用共享对象可有效的支持大量的细粒度的对象</p>
-</li>
-<li><p>场景</p>
-<ul>
-<li>系统中存在大量的相似对象</li>
-<li>细粒度的对象都具备较接近的外部状态，而内部状态与环境无关</li>
-<li>需要缓冲池的场景</li>
-</ul>
-</li>
-<li><p>UML类图</p>
-</li>
-</ul>
-<p><img src="http://img.blog.csdn.net/20170320152343329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdzMyNDgyMTk2Mg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>解决方案：通过弱引用和 Activity / Fragment 的生命周期来解决这个问题。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* Presenter抽象类。</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BasePresenter</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">protected</span> Reference&lt;T&gt; mViewRef;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attachView</span><span class="params">(T view)</span></span>&#123;</div><div class="line">        mViewRef = <span class="keyword">new</span> WeakReference&lt;T&gt;(view);  <span class="comment">//建立连接</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> T <span class="title">getview</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> mViewRef.get();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isViewAttach</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> mViewRef != <span class="keyword">null</span> &amp;&amp; mViewRef.get() != <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">detachView</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(mViewRef != <span class="keyword">null</span>)&#123;</div><div class="line">            mViewRef.clean();</div><div class="line">            mViewRef = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>BasePresenter 有 4 个方法，分别与 View 建立关联、解除关联、判断是否与 View 建立了关联、获取 View。View类型通过 BasePresenter 的泛型传递进来，Presenter 对这个 View 持有弱引用，通常这种情况下这个 View 类型应该是实现了某个特定的接口的 Activity 或者 Fragment 等类型。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* MVPBaseActivity 基类。</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MVPBaseActivity</span>&lt;<span class="title">V</span> , <span class="title">T</span> <span class="keyword">extends</span> <span class="title">BasePresenter</span>&lt;<span class="title">V</span>&gt;&gt; <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">protected</span> T mPresenter;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        mPresenter = createPresenter();     <span class="comment">//创建 Presenter</span></div><div class="line">        mPresenter.attachView((V)<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestory</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestory();</div><div class="line">        mPresenter.detachView();        <span class="comment">//销毁</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">abstract</span> T <span class="title">createPresenter</span><span class="params">()</span></span>;   <span class="comment">// 由子类实现具体的 Presenter</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>MVPBaseActivity 含有两个泛型参数。第一个是 View 接口的类型，第二个是 Presenter 的具体类型。通过泛型参数，使得一些通用的逻辑可以被抽象到 MVPBaseActivity 当中。例如，在 MVPBaseActivity 的 onCreate 函数中，会通过 createPresenter() 创建一个具体的 Presenter，这个 Presenter 的类型就是 BasePresenter<t> 类型。构建 Presneter 之后调用 attachView() 与 Activity 建立关联。而在 onDestory() 中解除了对 Activity 的引用。</t></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">MVPBaseActivity</span>&lt;<span class="title">ViewInterface</span>,<span class="title">MyPresenter</span>&gt;</span></div><div class="line">    <span class="title">implement</span> <span class="title">ViewInterface</span>&#123;</div><div class="line">        </div><div class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bunlde saveInstanceState)</span></span>&#123;</div><div class="line">            spuer.onCraete(saveInstanceState);</div><div class="line">            initView();</div><div class="line">            mPresenter.getMessage();</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//代码省略</span></div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>此时，Presenter 的创建以及与 View 建立关联等操作都被封装到了 MVPBaseActivity 中，消除了子类重复代码的同时又避免了 Activity 的内存泄露问题。</p>
 <blockquote>
-<p>上述设计模式相关代码都已上传至gihub仓库中<a href="https://github.com/JocherCH/java-pattern，本文首发https://jocherch.github.io" target="_blank" rel="external">https://github.com/JocherCH/java-pattern，本文首发https://jocherch.github.io</a></p>
+<p>本文选取自《Android源码设计模式解析与实战》中的MVP章节内容</p>
 </blockquote>
 
       
@@ -571,12 +444,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/pattern/" rel="tag"># pattern</a>
-          
-        </div>
-      
 
       
         
@@ -586,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/riderwu/Android-Studio-KeyMap/" rel="next" title="Android Studio 快捷键">
-                <i class="fa fa-chevron-left"></i> Android Studio 快捷键
+              <a href="/pattern/action-pattern/" rel="next" title="行为型设计模式">
+                <i class="fa fa-chevron-left"></i> 行为型设计模式
               </a>
             
           </div>
@@ -595,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/pattern/action-pattern/" rel="prev" title="行为型设计模式">
-                行为型设计模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -613,10 +476,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="pattern/structure-pattern/"
-     data-title="结构型设计模式"
+        <div class="ds-share flat" data-thread-key="mvp/mvp-memory-leak/"
+     data-title="mvp 内存泄露处理方案"
      data-content=""
-     data-url="http://yoursite.com/pattern/structure-pattern/">
+     data-url="http://yoursite.com/mvp/mvp-memory-leak/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -643,8 +506,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="pattern/structure-pattern/"
-           data-title="结构型设计模式" data-url="http://yoursite.com/pattern/structure-pattern/">
+      <div class="ds-thread" data-thread-key="mvp/mvp-memory-leak/"
+           data-title="mvp 内存泄露处理方案" data-url="http://yoursite.com/mvp/mvp-memory-leak/">
       </div>
     
   </div>
@@ -668,17 +531,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.webp"
@@ -760,22 +614,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#桥接模式-Bridge-Pattern"><span class="nav-number">1.</span> <span class="nav-text">桥接模式(Bridge Pattern)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外观模式-Facade-Pattern"><span class="nav-number">2.</span> <span class="nav-text">外观模式(Facade Pattern)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合模式-Composite-Pattern"><span class="nav-number">3.</span> <span class="nav-text">组合模式(Composite Pattern)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰模式-Decorator-Pattern"><span class="nav-number">4.</span> <span class="nav-text">装饰模式(Decorator Pattern)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配器模式-Adapter-Pattern"><span class="nav-number">5.</span> <span class="nav-text">适配器模式(Adapter Pattern)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理模式-Proxy-Pattern"><span class="nav-number">6.</span> <span class="nav-text">代理模式(Proxy Pattern)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#享元模式-FlyWeight-Pattern"><span class="nav-number">7.</span> <span class="nav-text">享元模式(FlyWeight Pattern)</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
