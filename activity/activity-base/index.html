@@ -118,7 +118,7 @@ Activitypublic class Activity extend ContextThemeWrapper implements LayoutInflat
 Activitypublic class Activity extend ContextThemeWrapper implements LayoutInflater.Factor2 , Window.Callback , KeyEvent.Callback , View.onCreateContextMenuListener , ComponentCallback2
 对">
 <meta property="og:image" content="http://yoursite.com/images/activityLife.png">
-<meta property="og:updated_time" content="2017-03-28T03:10:06.493Z">
+<meta property="og:updated_time" content="2017-03-28T03:15:06.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="activity 基础介绍">
 <meta name="twitter:description" content="阅读本文大概需要15分钟
@@ -407,6 +407,7 @@ Activitypublic class Activity extend ContextThemeWrapper implements LayoutInflat
 </blockquote>
 <h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><p>public class Activity extend ContextThemeWrapper implements LayoutInflater.Factor2 , Window.Callback , KeyEvent.Callback , View.onCreateContextMenuListener , ComponentCallback2</p>
 <p>对于用户来说 Activity 是单一的，焦点化的事物。几乎所有的 Activity 都是与用户交互，所以 Activity 类负责为您创建一个可以用 setContent( View ) 放置 UI 的窗口。虽然 Activity 经常作为全屏窗口呈现给用户，但也可以以其他方式使用：作为浮动窗口 ( 通过使用 windowIsFloating集合的主题 ) 或嵌入另一个 Activity ( 使用ActivityGroup ) 的窗口。有两个方法是大多数 Activity 子类都会实现的方法：</p>
+<a id="more"></a>
 <ul>
 <li>onCreate( Bundle )：初始化 Activity 的地方。重要的一点是，我们通常调用 setContent( View ) 来定义 UI 的布局资源，并使用 findViewById( int ) 来检索需要以编程方式交互的 UI 中的窗口的小部件。</li>
 <li>onPause ()：当我们离开 Activity 时需要处理的地方。重要的一点，这里通常用来保存数据持久化。</li>

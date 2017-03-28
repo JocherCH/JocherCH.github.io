@@ -397,93 +397,17 @@
 
       
         
-          
-            <blockquote class="blockquote-center"><p>阅读本文大概需要15分钟</p>
+          <blockquote class="blockquote-center"><p>阅读本文大概需要15分钟</p>
 </blockquote>
 <h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><p>public class Activity extend ContextThemeWrapper implements LayoutInflater.Factor2 , Window.Callback , KeyEvent.Callback , View.onCreateContextMenuListener , ComponentCallback2</p>
 <p>对于用户来说 Activity 是单一的，焦点化的事物。几乎所有的 Activity 都是与用户交互，所以 Activity 类负责为您创建一个可以用 setContent( View ) 放置 UI 的窗口。虽然 Activity 经常作为全屏窗口呈现给用户，但也可以以其他方式使用：作为浮动窗口 ( 通过使用 windowIsFloating集合的主题 ) 或嵌入另一个 Activity ( 使用ActivityGroup ) 的窗口。有两个方法是大多数 Activity 子类都会实现的方法：</p>
-<ul>
-<li>onCreate( Bundle )：初始化 Activity 的地方。重要的一点是，我们通常调用 setContent( View ) 来定义 UI 的布局资源，并使用 findViewById( int ) 来检索需要以编程方式交互的 UI 中的窗口的小部件。</li>
-<li>onPause ()：当我们离开 Activity 时需要处理的地方。重要的一点，这里通常用来保存数据持久化。</li>
-</ul>
-<p>为了与 Context.startActivity() 一起使用，所有的 Activity 需要在 AndroidManifest.xml 有对应的 <activity> 声明。</activity></p>
-<h2 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h2><p>从 3.1 开始，Activity 实现可利用Fragment类更好的模块化代码，从而构建复杂的用户界面，并有良好的扩展能力。此处对于 Fragment 不在细讲。</p>
-<h2 id="Activity-生命周期"><a href="#Activity-生命周期" class="headerlink" title="Activity 生命周期"></a>Activity 生命周期</h2><p>系统通过堆栈来对 Activitys 进行管理。当一个新的 Activity 启动时，它被放置在堆栈的顶部，并成为正在运行的 Activity，以前的 Activity 则保持在堆栈的下方，并且直到新的 Activity 退出后才会再次到达前台。<br>Activity 基本有四个状态：</p>
-<ul>
-<li>如果 Activity 显示在屏幕的前方 ( 位于堆栈的顶部 )，则该活动处于活动状态或者正在运行</li>
-<li>如果 Activity 失去焦点但仍然可见，则会暂停。暂停的 Activity 是完全活在的，但在极低的内存情况下可能会被系统杀死</li>
-<li>如果 Activity 被另一个 Activity 完全遮挡，则会被停止。它仍然保留所有的状态和成员信息，但是用户不可见，并且当内存极低的情况下，会被系统回收</li>
-<li>如果 Activity 暂停或者停止的时候，系统可以通过 finish 或者杀死进程，从而在内存中删除 Activity 。当它再次给用户时，则是重新启动到并恢复之前的状态。</li>
-</ul>
-<p><img src="/images/activityLife.png" alt="image"></p>
-<p>Activity 的整个生命周期是由以下 Activity 的各个方法定义。我们可以在 Activity 中覆盖父类方法来执行自己定义的逻辑。所有的 Activity 都会实现 Oncreate( Bundle ) 来进行初始化动作，实现 onPause() 来提交对数据的更改。<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">extends</span> <span class="title">ApplicationContext</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle saveInstanceState)</span></span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span></span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span></span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span></span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span></span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span></span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestory</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>一般来说，Activity 的生命周期展示如下：</p>
-<p><strong>onCreate()</strong></p>
-<ul>
-<li>描述：在 Activity 第一次创建时调用。这里我们应该执行一些常规操作：创建视图，将数据绑定到列表等等。此方法还提供一个包含之前冻结状态的 Bundle (如果有的话) </li>
-<li>是否可回收：否</li>
-<li>下一步：onStart()</li>
-</ul>
-<p><strong>onRestart()</strong></p>
-<ul>
-<li>描述：在 Activity 停止之后，再次启动时调用，一般跟着 onStart() </li>
-<li>是否可回收：否</li>
-<li>下一步：onStart()</li>
-</ul>
-<p><strong>onStart()</strong></p>
-<ul>
-<li>描述：当 Activity 对用户可见时调用。如果 Activity 到达前台，则继续执行 onResume(); 如果隐藏，则返回 onStop();</li>
-<li>是否可回收：否</li>
-<li>下一步：onResume() / onStop()</li>
-</ul>
-<p><strong>onResume()</strong></p>
-<ul>
-<li>描述：当 Activity 与用户开始交互时调用。此时，Activity 位于堆栈的顶部，用户可直接交互。</li>
-<li>是否可回收：否</li>
-<li>下一步：onPause()</li>
-</ul>
-<p><strong>onPause()</strong></p>
-<ul>
-<li>描述：当前 Activity 不在堆栈顶部时调用。这里通常将未保存的更改交给持久性数据，停止动画和可能耗用CPU等其他事情。如果当前 Activity 返回当前面，则继续执行 onResume(); 如果用户不可见，则返回 onStop()</li>
-<li>是否可回收：否</li>
-<li>下一步：onResume() / onStop()</li>
-</ul>
-<p><strong>onStop()</strong></p>
-<ul>
-<li>描述：当前 Activity 不在被显示时调用。如果这个 Activity 再次与用户交互时，调用 onRestart(); 如果这个 Activity 消失，则调用 onDestory()</li>
-<li>是否可回收：是</li>
-<li>下一步：onRestart() / onDestory()</li>
-</ul>
-<p><strong>onDestory()</strong></p>
-<ul>
-<li>描述：在销毁 Activity 最后调用的一个方法。这可能是由于 Activity 完成 ( 有人调用Finish() ) ，或者系统暂时摧毁了  Activity 这个实例，可以通过 isFinishing() 这个方法来区分这两个场景</li>
-<li>是否可回收：是</li>
-<li>下一步：无</li>
-</ul>
-<p>对于上面可回收的方法，系统可能在任何时候杀死该线程。所以我们应该使用 onPause() 方法来进行数据的持久化操作。另外，在 Activity 置于这样的后台状态之前，调用 onSaveInstanceState( Bundle )，可以将 Activity 中的任何动态实例保存在给定的 Bubdle 当中，以便后面调用 onCreate( Bunlde ) 中接收 Activity 需要重建创建。</p>
-<h2 id="更改配置"><a href="#更改配置" class="headerlink" title="更改配置"></a>更改配置</h2><p>如果设备的配置 ( 屏幕方向变更 ) 发生变更，则显示的用户界面内的内容都需要进行更新以匹配该配置。因为 Activity 是与用户交互的主要机制，它包含处理配置更改的特殊支持。</p>
-<p>除非另外说明，否则，配置更改 ( 例如屏幕方向，语言，输入设备等的更改 ) 将导致当前的 Activity 被破坏，并通过 onPause()，onStop()和 onDestory() 的正常 Activity 生命周期过程。如果 Activity 已经处于前台或用户可见，则在该实例中调用一次 onDestory() ，然后创建一个新的 Activity 实例。</p>
-<p>一般情况下，我们可以通过清单文件中的 android:configChanges 属性来设置，让 Activity 绕过重新启动的流程。对于任何类型的配置更改，可以对当前 Activity 的 onConfigurationChanges( Configuration ) 方法的调用，而不是重新启动。但是，如果配置更改涉及到无法处理的操作时，仍将会重新启动，并且不会调用 onConfigurationChanges( Configuration )</p>
-<h2 id="启动-Activity-并有返回值"><a href="#启动-Activity-并有返回值" class="headerlink" title="启动 Activity 并有返回值"></a>启动 Activity 并有返回值</h2><p>startActivity( Intent ) 方法用于启动一个新的 Activity，并放置在堆栈的顶部。它需要一个 Intent 的参数，来描述需要执行的 Activity。有时候我们想从 Activity 结束时等到一个结构值。我们可以使用标识该调用的第二整数参数调用 startActivityForResult( Intent , int ) ，当 Activity 退出时，可以调用 setResult( int ) 将数据返回给父项。而且会提供一个结果代码，可以是 RESULT_CANCELED，RESULT_OK 或者是从 RESULT_FIRST_USER 开始的任意定义值。此外，它可以返回一个包含任何需要的附加数据的 Intent 。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PICK_CONTACT_REQUEST = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode , KeyEvent event)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(keyCode == PICK_CONTACT_REQUEST)&#123;</div><div class="line">            startActivityForResult(<span class="keyword">new</span> Intent(Intent.ACTION_PICK,</div><div class="line">                 <span class="keyword">new</span> Uri(<span class="string">"content://contacts"</span>),PICK_CONTACT_REQUEST);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;     </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode , <span class="keyword">int</span> resultCode , Intent data)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(resultCode == PICK_CONTACT_REQUEST)&#123;</div><div class="line">            <span class="keyword">if</span>(requestCode == RESULT_OK)&#123;</div><div class="line">                 startActivity(<span class="keyword">new</span> Intent(Intent.ACTION_VIEW, data));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="状态持久化"><a href="#状态持久化" class="headerlink" title="状态持久化"></a>状态持久化</h2><p>Activity 通常有两种持久化操作：共享的文件类数据 ( SQL数据库 ) 和用户偏爱的内存 ( 内部 ) 数据。</p>
-<p>对于 Context 中的数据，我们建议 Activity 使用 “编辑到位” 的用户模型。也就是说，用户所做的任何数据操作是立即有效地进行，而不需要额外的确认步骤。那支持这种模式通常需要遵循以下两个简单的规则。</p>
-<ul>
-<li>创建一个新的文档时，应该立即创建条目或者文件进行备份。例如，用户开始编写新的邮件时，就会创建一个新的条目，以便之后处理其他事情时，该邮件会在草稿箱中。</li>
-<li>当 Activity 的 onPause 被调用时，它需要提交用户的任何操作到 Context Provider 或者文件中。这样可以确保即将运行的其他 Activity 能知道这些更改。</li>
-</ul>
-<p>上述模式主要目的放置用户在 Activitys 间跳转时数据丢失，并允许系统在 Activity 暂时后随之安全的杀死该 Activity(因系统内存回收)。需要注意的是，对于点击 BACK 键回收的 Activity 并不支持该模式。</p>
-<p>Activity 还可以通过 getPreferences(int) 方法来进行状态持久化管理，它允许我们查找 / 修改与 Activity 关联的一组键值对数据。对于多组件之间 (Activity、receivers、services、provider ) 的共享数据推荐使用。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DAY_VALUE_MODE = <span class="number">0</span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> WEEK_VALUE_MODE = <span class="number">1</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> SharePreferences mPrefs;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mCurViewMode;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle saveInstanceState)</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(saveInstanceState);</div><div class="line">        </div><div class="line">        mPrefs  = getSharePreferences();</div><div class="line">        mCurViewMode = mPrefs.getInt(<span class="string">"view_mode"</span>, DAY_VIEW_MODE);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        </div><div class="line">        Editor ed = mPrefs.edit();</div><div class="line">        ed.put(<span class="string">"view_mode"</span>,mCurViewMode);</div><div class="line">        ed.commit();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="进程的生命周期"><a href="#进程的生命周期" class="headerlink" title="进程的生命周期"></a>进程的生命周期</h2><p>Android 系统希望尽可能的保持应用程序的进程，但是在内存不足时，最终将回收旧的进程。如 Activity 生命周期中所描述，关于要回收那个进程的决定与用户与其交互的状态密切相关。一般来说，根据Activity的运行状态，可以分为四种状态，这里按重要性进行排列。</p>
-<ol>
-<li>前台 Activity (用户当前正与之交互且在屏幕最顶端)。这是最重要的，只有在启用该进行所需的内存大于设备上可用进程的时候才会被回收。</li>
-<li>可见 Activity (对用户可见，但不在前台活动)。除非保持前台活动运行，否则不会被回收。</li>
-<li>后台 Activity (用户不可见，且暂停状态)。系统可以安全的回收。当进程被会后后，用户重新跳转到该 Activity 是，其 onCreate (Bundle) 中的 Bubler 有之前保留的状态数据。</li>
-<li>空进程。是最低优先级的。如果不属于以上类别，那它就是这种。这里没有活跃的组件，只是出于缓存的目的而被保留 (为了更加有效地使用内存而不是完全释放掉)，只要 Android 需要可以随时杀掉它们。</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/activity/activity-base/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
